@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
+
 namespace AlgorithmSolutions
 {
 	public class LeetCodeAlgorithm1
@@ -44,6 +46,41 @@ namespace AlgorithmSolutions
                 }
             }
             return result;
+        }
+
+        public int[] SortedSquares(int[] nums)
+        {
+        /*Input: nums = [-4,-1,0,3,10]
+        Output: [0,1,9,16,100]
+            Explanation: After squaring, the array becomes[16, 1, 0, 9, 100].
+            After sorting, it becomes[0, 1, 9, 16, 100].
+                */
+
+            if (nums.Length % 2 != 0)
+            {
+                for (int i = 0; i < nums.Length / 2; i++)
+                {
+                    swap(nums, i, nums.Length - i - 1);
+                }
+                nums[(nums.Length) / 2] = (int)Math.Pow(nums[(nums.Length) / 2], 2);
+            }
+            else
+            {
+                for (int i = 0; i < nums.Length / 2; i++)
+                {
+                    swap(nums, i, nums.Length - i - 1);
+                }
+            }
+
+            Array.Sort(nums);
+            return nums;
+        }
+        private static void swap(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = (int)Math.Pow(array[j], 2);
+            array[j] = (int)Math.Pow(temp, 2);
+
         }
     }
 }
