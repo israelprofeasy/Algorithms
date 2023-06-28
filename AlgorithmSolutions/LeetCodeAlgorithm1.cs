@@ -11,8 +11,61 @@ namespace AlgorithmSolutions
                 Output: 4
                 Explanation: 9 exists in nums and its index is 4
             */
+
             return Array.IndexOf(nums, target);
         }
+        public int Search2(int[] nums, int target)
+        {
+            int left = 0;
+            int right = nums.Length - 1;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (nums[mid] == target)
+                    return mid;
+
+                if (nums[mid] < target)
+                    left = mid + 1;
+                else
+                    right = mid - 1;
+            }
+
+            return -1;
+        }
+
+        public int FirstBadVersion(int n)
+        {
+            int left = 1;
+            int right = n;
+
+            while (left < right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (IsBadVersion(mid))
+                {
+                    // The current version is bad, so move to the left half
+                    right = mid;
+                }
+                else
+                {
+                    // The current version is good, so move to the right half
+                    left = mid + 1;
+                }
+            }
+            return left;
+
+
+        }
+
+        private bool IsBadVersion(int mid)
+        {
+            throw new NotImplementedException("This was not Implemented");
+
+        }
+
 
 
         public int SearchInsert(int[] nums, int target)
@@ -48,6 +101,26 @@ namespace AlgorithmSolutions
             return result;
         }
 
+        public int SearchInsert2(int[] nums, int target)
+        {
+            int left = 0;
+            int right = nums.Length - 1;
+
+            while (left <= right)
+            {
+                int mid = left + (right - left) / 2;
+
+                if (nums[mid] == target)
+                    return mid;
+
+                if (nums[mid] < target)
+                    left = mid + 1;
+
+                else
+                    right = mid - 1;
+            }
+            return left;
+        }
         public int[] SortedSquares(int[] nums)
         {
             /*Input: nums = [-4,-1,0,3,10]
