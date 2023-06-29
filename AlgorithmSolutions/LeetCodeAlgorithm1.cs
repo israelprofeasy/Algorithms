@@ -281,6 +281,22 @@ Your solution must use only constant extra space.
             }
             return new int[] { };
         }
+
+        public void ReverseString(char[] s)
+        {
+        //Input: s = ["h","e","l","l","o"]
+       // Output: ["o","l","l","e","h"]
+            var left = 0;
+            var right = s.Length - 1;
+            while (left < right)
+            {
+                var temp = s[left];
+                s[left] = s[right];
+                s[right] = temp;
+                left++;
+                right--;
+            }
+        }
     }
 }
 
