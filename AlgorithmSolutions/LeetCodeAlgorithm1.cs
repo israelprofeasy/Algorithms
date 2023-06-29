@@ -174,6 +174,60 @@ namespace AlgorithmSolutions
                 k--;
             }
         }
+
+        public void MoveZeroes(int[] nums)
+        {
+        //Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+        //Note that you must do this in-place without making a copy of the array.
+
+
+        //Input: nums = [0,1,0,3,12]
+        //Output: [1,3,12,0,0]
+            //
+            ///
+
+
+            if (nums.Length == 0 || !nums.Contains(0))
+                return;
+
+            var left = 0;
+            var right = 0;
+            var length = nums.Length;
+            while (right < length)
+            {
+                if (nums[left] == 0 && nums[right] == 0)
+                    right++;
+                else
+                {
+                    nums[left] = nums[right];
+
+                    if (right != left)
+                    {
+                        nums[right] = 0;
+                        if ((right - left) > 1)
+                        {
+                            left++;
+                            right++;
+                        }
+                        else
+                        {
+                            left = right;
+                            right++;
+                        }
+                    }
+                    else
+                    {
+                        left++;
+                        right++;
+                    }
+
+                }
+
+            }
+
+
+        }
     }
 }
 
