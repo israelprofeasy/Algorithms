@@ -300,6 +300,22 @@ Your solution must use only constant extra space.
                 right--;
             }
         }
+
+        public string ReverseWords(string s)
+        {
+
+        //Input: s = "Let's take LeetCode contest"
+        //Output: "s'teL ekat edoCteeL tsetnoc"
+            var splitwor = s.Split(" ");
+            for (var i = 0; i < splitwor.Length; i++)
+            {
+                var ch = splitwor[i].ToCharArray();
+                Array.Reverse(ch);
+                splitwor[i] = new String(ch);
+            }
+
+            return String.Join(" ", splitwor);
+        }
     }
 }
 
