@@ -14,7 +14,7 @@ namespace AlgorithmSolutions
             //output = 8
             var cd2 = new int[][] { new int[] { 5, 7, 3 }, new int[] { 1, 2, 2 }, new int[] { 1, 2, 3 } };
             //output = -1
-            Console.WriteLine(Card(cd2));
+            Console.WriteLine(WiningCard(cd2));
         }
         static bool IsValid(string str)
         {
@@ -86,7 +86,7 @@ namespace AlgorithmSolutions
             return result;
         }
 
-        static int Card(int[][] cards)
+        static int WiningCard(int[][] cards)
         {
             var ls = cards.ToList();
             Console.WriteLine("====================");
