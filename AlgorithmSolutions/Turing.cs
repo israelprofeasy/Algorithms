@@ -99,6 +99,46 @@ namespace AlgorithmSolutions
 
             return highCount.Count() - lowCount.Count() == 0 ? -1 : highCount[lowCount.Count()];
         }
+
+        static int DecodeStringToNumber(string s)
+        {
+
+            //var s = "@@##~";
+            //output = 1007
+            var dic = new Dictionary<char, int>() { { '@', 1 }, { '#', 5 }, { '$', 10 }, { '%', 50 }, { '&', 100 }, { '+', 500 }, { '~', 1000 } };
+            var dicount = new Dictionary<char, int>();
+            var i = 0;
+            var j = s.Length - 1;
+            while (i < j)
+            {
+                if (dicount.ContainsKey(s[i]))
+                {
+                    dicount[s[i]]++;
+                }
+                else
+                {
+                    dicount.Add(s[i], 1);
+                }
+                if (dicount.ContainsKey(s[j]))
+                {
+                    dicount[s[j]]++;
+                }
+                else
+                {
+                    dicount.Add(s[j], 1);
+                }
+
+                i++;
+                j--;
+            }
+            var sum = 0;
+            foreach (var item in dicount)
+            {
+                var valu = dic[item.Key];
+                sum += (valu * item.Value);
+            }
+            return sum;
+        }
     }
 }
 
